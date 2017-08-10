@@ -20,6 +20,24 @@ export default class Login extends React.Component {
     @autobind
     signIn() {
         NavigationHelpers.reset(this.props.navigation, "Walkthrough");
+        fetch("http://10.0.80.102:3000/test", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+
+            },
+            body: JSON.stringify({
+                member_first_name: "",
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            return json;
+        }).catch(function(error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            throw error;
+        });
     }
 
     @autobind
