@@ -49,7 +49,7 @@ export default class Field extends Component {
                 :
                     <TextInput
                         ref="comment"
-                        onChangeText={this.setValue} {...{ value }} {...props}
+                        //onChangeText={this.setValue} {...{ value }} {...props}
                         style={style.input}
                         placeholderTextColor={variables.gray}
                         underlineColorAndroid="transparent"

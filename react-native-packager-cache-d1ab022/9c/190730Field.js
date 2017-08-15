@@ -145,9 +145,9 @@ var Field = (0, _native.observer)(_class = (_class2 = function (_Component) {
                         label.toUpperCase()
                     )
                 ),
-                _react2.default.Children.count(this.props.children) > 0 ? this.props.children : _react2.default.createElement(_reactNative.TextInput, babelHelpers.extends({
+                _react2.default.Children.count(this.props.children) > 0 ? this.props.children : _react2.default.createElement(_reactNative.TextInput, {
                     ref: "comment",
-                    onChangeText: this.setValue }, { value: value }, props, {
+
                     style: style.input,
                     placeholderTextColor: _commonColor2.default.gray,
                     underlineColorAndroid: "transparent",
@@ -155,7 +155,7 @@ var Field = (0, _native.observer)(_class = (_class2 = function (_Component) {
                         fileName: _jsxFileName,
                         lineNumber: 50
                     }
-                }))
+                })
             );
         }
     }]);

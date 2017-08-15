@@ -62,28 +62,39 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 var Login = (_class = function (_React$Component) {
     babelHelpers.inherits(Login, _React$Component);
 
-    function Login() {
+    function Login(props) {
         babelHelpers.classCallCheck(this, Login);
-        return babelHelpers.possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).apply(this, arguments));
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+        _this.state = { cell_phone: "", password: "" };
+        console.disableYellowBox = true;
+        return _this;
     }
 
     babelHelpers.createClass(Login, [{
         key: "signIn",
         value: function signIn() {
-            _components.NavigationHelpers.reset(this.props.navigation, "Walkthrough");
-            fetch("http://10.0.80.102:3000/test", {
+            var _this2 = this;
+
+            fetch("http://10.0.80.67:3000/api/users/login", {
                 method: "POST",
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json"
-
                 },
                 body: JSON.stringify({
-                    member_first_name: ""
+                    cell_phone: this.state.cell_phone,
+                    password: this.state.password
                 })
             }).then(function (response) {
                 return response.json();
             }).then(function (json) {
+                if (parseInt(json.status) == 2000) {
+                    _components.NavigationHelpers.reset(_this2.props.navigation, "Walkthrough");
+                } else {
+                    alert("手机号或密码错误.");
+                }
                 return json;
             }).catch(function (error) {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
@@ -98,45 +109,47 @@ var Login = (_class = function (_React$Component) {
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             return _react2.default.createElement(
                 _reactNative.Image,
                 { source: _components.Images.login, style: style.img, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 49
+                        lineNumber: 59
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.ScrollView,
                     { contentContainerStyle: style.content, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 50
+                            lineNumber: 60
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.KeyboardAvoidingView,
                         { behavior: "position", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 51
+                                lineNumber: 61
                             }
                         },
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: style.logo, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 52
+                                    lineNumber: 62
                                 }
                             },
                             _react2.default.createElement(_Mark2.default, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 53
+                                    lineNumber: 63
                                 }
                             }),
                             _react2.default.createElement(
                                 _nativeBase.H1,
                                 { style: _reactNative.StyleSheet.flatten(style.title), __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 54
+                                        lineNumber: 64
                                     }
                                 },
                                 "\u60E0\u5EB7\u7CD6\u5FA1"
@@ -146,42 +159,68 @@ var Login = (_class = function (_React$Component) {
                             _reactNative.View,
                             { style: _components.Styles.form, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 56
+                                    lineNumber: 66
                                 }
                             },
-                            _react2.default.createElement(_components.Field, { label: "\u624B\u673A\u53F7",
-                                autoCapitalize: "none",
-                                returnKeyType: "next",
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 57
-                                }
-                            }),
-                            _react2.default.createElement(_components.Field, { label: "\u5BC6\u7801",
-                                secureTextEntry: true,
-                                autoCapitalize: "none",
-                                returnKeyType: "go",
-                                onSubmitEditing: this.signIn,
-                                last: true,
-                                __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 61
-                                }
-                            })
+                            _react2.default.createElement(
+                                _nativeBase.Item,
+                                { underline: true, style: style.textBox, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 80
+                                    }
+                                },
+                                _react2.default.createElement(_nativeBase.Icon, { name: "navigate", __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 81
+                                    }
+                                }),
+                                _react2.default.createElement(_nativeBase.Input, { placeholder: "\u624B\u673A\u53F7", returnKeyType: "done",
+                                    onChangeText: function onChangeText(value) {
+                                        return _this3.setState({ cell_phone: value });
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 82
+                                    }
+                                })
+                            ),
+                            _react2.default.createElement(
+                                _nativeBase.Item,
+                                { underline: true, style: style.textBox, __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 86
+                                    }
+                                },
+                                _react2.default.createElement(_nativeBase.Icon, { name: "navigate", __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 87
+                                    }
+                                }),
+                                _react2.default.createElement(_nativeBase.Input, { placeholder: "\u5BC6\u7801", returnKeyType: "done",
+                                    secureTextEntry: true,
+                                    onChangeText: function onChangeText(value) {
+                                        return _this3.setState({ password: value });
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 88
+                                    }
+                                })
+                            )
                         ),
                         _react2.default.createElement(
                             _reactNative.View,
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 69
+                                    lineNumber: 94
                                 }
                             },
                             _react2.default.createElement(
                                 _nativeBase.Button,
                                 { primary: true, block: true, onPress: this.signIn, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 70
+                                        lineNumber: 95
                                     }
                                 },
                                 _react2.default.createElement(
@@ -189,7 +228,7 @@ var Login = (_class = function (_React$Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 71
+                                            lineNumber: 96
                                         }
                                     },
                                     "\u767B\u5F55"
@@ -199,14 +238,14 @@ var Login = (_class = function (_React$Component) {
                                 _nativeBase.Button,
                                 { transparent: true, block: true, onPress: this.signUp, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 73
+                                        lineNumber: 98
                                     }
                                 },
                                 _react2.default.createElement(
                                     _components.Small,
                                     { style: { color: "white" }, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 74
+                                            lineNumber: 99
                                         }
                                     },
                                     "\u7528\u6237\u6CE8\u518C"
@@ -241,5 +280,9 @@ var style = _reactNative.StyleSheet.create({
     },
     blur: {
         backgroundColor: "rgba(255, 255, 255, .2)"
+    },
+    textBox: {
+        marginTop: 10,
+        width: 300
     }
 });
