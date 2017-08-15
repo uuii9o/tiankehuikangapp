@@ -37,8 +37,8 @@ export default class Drawer extends Component {
                 </Header>
                 <View style={style.itemContainer}>
                     <View style={style.row}>
-                        <DrawerItem {...{navigation}} name="主页" icon="ios-home-outline" left />
-                        <DrawerItem {...{navigation}} name="日历" icon="ios-calendar-outline" />
+                        <DrawerItem {...{navigation}} name="Home" icon="ios-home-outline" left />
+                        <DrawerItem {...{navigation}} name="Calendar" icon="ios-calendar-outline" />
                     </View>
                     <View style={style.row}>
                         <DrawerItem {...{navigation}} name="Groups" icon="ios-apps-outline" left />
@@ -46,15 +46,15 @@ export default class Drawer extends Component {
                     </View>
                     <View style={style.row}>
                         <DrawerItem {...{navigation}} name="Lists" icon="ios-list-outline" left />
-                        <DrawerItem {...{navigation}} name="个人主页" icon="ios-contact-outline" />
+                        <DrawerItem {...{navigation}} name="Profile" icon="ios-contact-outline" />
                     </View>
                     <View style={style.row}>
-                        <DrawerItem {...{navigation}} name="时间线" icon="ios-time-outline" left />
-                        <DrawerItem {...{navigation}} name="设置" icon="ios-options-outline" />
+                        <DrawerItem {...{navigation}} name="Timeline" icon="ios-time-outline" left />
+                        <DrawerItem {...{navigation}} name="Settings" icon="ios-options-outline" />
                     </View>
                 </View>
                 <Button transparent block onPress={this.login}>
-                    <Text>登出</Text>
+                    <Text>LOGOUT</Text>
                 </Button>
             </Container>
         </Image>;

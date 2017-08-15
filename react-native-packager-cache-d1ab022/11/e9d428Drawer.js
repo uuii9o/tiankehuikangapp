@@ -167,12 +167,12 @@ var Drawer = (_class = function (_Component) {
                                     lineNumber: 39
                                 }
                             },
-                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "\u4E3B\u9875", icon: "ios-home-outline", left: true, __source: {
+                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "Home", icon: "ios-home-outline", left: true, __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 40
                                 }
                             })),
-                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "\u65E5\u5386", icon: "ios-calendar-outline", __source: {
+                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "Calendar", icon: "ios-calendar-outline", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 41
                                 }
@@ -208,7 +208,7 @@ var Drawer = (_class = function (_Component) {
                                     lineNumber: 48
                                 }
                             })),
-                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "\u4E2A\u4EBA\u4E3B\u9875", icon: "ios-contact-outline", __source: {
+                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "Profile", icon: "ios-contact-outline", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 49
                                 }
@@ -221,12 +221,12 @@ var Drawer = (_class = function (_Component) {
                                     lineNumber: 51
                                 }
                             },
-                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "\u65F6\u95F4\u7EBF", icon: "ios-time-outline", left: true, __source: {
+                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "Timeline", icon: "ios-time-outline", left: true, __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 52
                                 }
                             })),
-                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "\u8BBE\u7F6E", icon: "ios-options-outline", __source: {
+                            _react2.default.createElement(DrawerItem, babelHelpers.extends({ navigation: navigation }, { name: "Settings", icon: "ios-options-outline", __source: {
                                     fileName: _jsxFileName,
                                     lineNumber: 53
                                 }
@@ -248,7 +248,7 @@ var Drawer = (_class = function (_Component) {
                                     lineNumber: 57
                                 }
                             },
-                            "\u767B\u51FA"
+                            "LOGOUT"
                         )
                     )
                 )
