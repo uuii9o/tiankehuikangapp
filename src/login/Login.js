@@ -64,32 +64,33 @@ export default class Login extends React.Component {
                         <H1 style={StyleSheet.flatten(style.title)}>惠康糖御</H1>
                     </View>
                     <View style={Styles.form}>
-                        {/*<Field label="手机号"*/}
-                               {/*autoCapitalize="none"*/}
-                               {/*returnKeyType="next"*/}
-                               {/*onChangeText={(value) => this.setState({cell_phone: value})}*/}
-                        {/*/>*/}
-                        {/*<Field label="密码"*/}
-                               {/*secureTextEntry*/}
-                               {/*autoCapitalize="none"*/}
-                               {/*returnKeyType="go"*/}
-                               {/*onSubmitEditing={this.signIn}*/}
-                               {/*last*/}
-                               {/*onChangeText={(value) => this.setState({password: value})}*/}
-                        {/*/>*/}
-                        <Item underline style={style.textBox}>
-                            <Icon name="navigate" />
-                            <Input placeholder="手机号" returnKeyType="done"
-                                   onChangeText={(value) => this.setState({cell_phone: value})}
-                            />
-                        </Item>
-                        <Item underline style={style.textBox}>
-                            <Icon name="navigate" />
-                            <Input placeholder="密码" returnKeyType="done"
-                                   secureTextEntry
-                                   onChangeText={(value) => this.setState({password: value})}
-                            />
-                        </Item>
+                        <Field label="手机号"
+                               autoCapitalize="none"
+                               returnKeyType="next"
+                               onChangeText={(value) => this.setState({cell_phone: value})}
+                        />
+                        <Field label="密码"
+                               //secureTextEntry
+                               isPasswordField="true"
+                               autoCapitalize="none"
+                               returnKeyType="go"
+                               onSubmitEditing={this.signIn}
+                               last
+                               onChangeText={(value) => this.setState({password: value})}
+                        />
+                        {/*<Item underline style={style.textBox}>*/}
+                            {/*<Icon name="navigate" />*/}
+                            {/*<Input placeholder="手机号" returnKeyType="done"*/}
+                                   {/*onChangeText={(value) => this.setState({cell_phone: value})}*/}
+                            {/*/>*/}
+                        {/*</Item>*/}
+                        {/*<Item underline style={style.textBox}>*/}
+                            {/*<Icon name="navigate" />*/}
+                            {/*<Input placeholder="密码" returnKeyType="done"*/}
+                                   {/*secureTextEntry*/}
+                                   {/*onChangeText={(value) => this.setState({password: value})}*/}
+                            {/*/>*/}
+                        {/*</Item>*/}
                     </View>
                     <View>
                         <Button primary block onPress={this.signIn}>

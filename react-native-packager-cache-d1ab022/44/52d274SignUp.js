@@ -58,9 +58,17 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 var SignUp = (_class = function (_Component) {
     babelHelpers.inherits(SignUp, _Component);
 
-    function SignUp() {
+    function SignUp(props) {
         babelHelpers.classCallCheck(this, SignUp);
-        return babelHelpers.possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).apply(this, arguments));
+
+        var _this = babelHelpers.possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).call(this, props));
+
+        _this.state = {
+            cell_phone: "", password: "", password_confirm: "", email: "", first_name: "",
+            last_name: "", dob: "", gender: ""
+        };
+        console.disableYellowBox = true;
+        return _this;
     }
 
     babelHelpers.createClass(SignUp, [{
@@ -71,37 +79,77 @@ var SignUp = (_class = function (_Component) {
     }, {
         key: "signIn",
         value: function signIn() {
+            var _this2 = this;
+
+            if (this.state.password != this.state.password_confirm) {
+                alert("The password not match. Please reenter password.");
+                return;
+            }
             _components.NavigationHelpers.reset(this.props.navigation, "Walkthrough");
+            fetch("http://10.0.80.67:3000/api/users/sign_up", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user: {
+                        cell_phone: this.state.cell_phone,
+                        password: this.state.password,
+                        email: this.state.email
+                    },
+                    patient: {
+                        fname: this.state.first_name,
+                        lname: this.state.last_name,
+                        dob: this.state.dob,
+                        gender: this.state.gender
+                    }
+                })
+            }).then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                if (parseInt(json.status) == 2000) {
+                    _components.NavigationHelpers.reset(_this2.props.navigation, "Walkthrough");
+                } else {
+                    alert("手机号或密码错误.");
+                }
+                return json;
+            }).catch(function (error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+                throw error;
+            });
         }
     }, {
         key: "render",
         value: function render() {
+            var _this3 = this;
+
             return _react2.default.createElement(
                 _reactNative.Image,
                 { source: _components.Images.signUp, style: style.img, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 29
+                        lineNumber: 74
                     }
                 },
                 _react2.default.createElement(
                     _reactNative.ScrollView,
                     { style: _components.Styles.flexGrow, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 30
+                            lineNumber: 75
                         }
                     },
                     _react2.default.createElement(
                         _reactNative.KeyboardAvoidingView,
                         { behavior: "position", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 31
+                                lineNumber: 76
                             }
                         },
                         _react2.default.createElement(
                             _nativeBase.Header,
                             { noShadow: true, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 32
+                                    lineNumber: 77
                                 }
                             },
                             _react2.default.createElement(
@@ -109,19 +157,19 @@ var SignUp = (_class = function (_Component) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 33
+                                        lineNumber: 78
                                     }
                                 },
                                 _react2.default.createElement(
                                     _nativeBase.Button,
                                     { onPress: this.back, transparent: true, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 34
+                                            lineNumber: 79
                                         }
                                     },
                                     _react2.default.createElement(_nativeBase.Icon, { name: "close", __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 35
+                                            lineNumber: 80
                                         }
                                     })
                                 )
@@ -131,7 +179,7 @@ var SignUp = (_class = function (_Component) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 38
+                                        lineNumber: 83
                                     }
                                 },
                                 _react2.default.createElement(
@@ -139,16 +187,16 @@ var SignUp = (_class = function (_Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 39
+                                            lineNumber: 84
                                         }
                                     },
-                                    "Sign Up"
+                                    "\u75C5\u4EBA\u6CE8\u518C"
                                 )
                             ),
                             _react2.default.createElement(_nativeBase.Right, {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 41
+                                    lineNumber: 86
                                 }
                             })
                         ),
@@ -156,69 +204,51 @@ var SignUp = (_class = function (_Component) {
                             _reactNative.View,
                             { style: style.row, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 43
+                                    lineNumber: 88
                                 }
                             },
                             _react2.default.createElement(
                                 _nativeBase.Button,
                                 { transparent: true, block: true, style: _reactNative.StyleSheet.flatten(style.btn), __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 44
+                                        lineNumber: 89
                                     }
                                 },
                                 _react2.default.createElement(_nativeBase.Icon, { name: "logo-twitter", __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 45
+                                        lineNumber: 90
                                     }
                                 }),
                                 _react2.default.createElement(
                                     _nativeBase.Text,
                                     { style: { textAlign: "center" }, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 46
+                                            lineNumber: 91
                                         }
                                     },
-                                    "Connect with"
-                                ),
-                                _react2.default.createElement(
-                                    _nativeBase.Text,
-                                    { style: { textAlign: "center" }, __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 47
-                                        }
-                                    },
-                                    "Twitter"
+                                    "\u5FAE\u65B0\u767B\u5F55"
                                 )
                             ),
                             _react2.default.createElement(
                                 _nativeBase.Button,
                                 { transparent: true, block: true, style: _reactNative.StyleSheet.flatten([style.btn, style.facebook]), __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 49
+                                        lineNumber: 94
                                     }
                                 },
                                 _react2.default.createElement(_nativeBase.Icon, { name: "logo-facebook", __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 50
+                                        lineNumber: 95
                                     }
                                 }),
                                 _react2.default.createElement(
                                     _nativeBase.Text,
                                     { style: { textAlign: "center" }, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 51
+                                            lineNumber: 97
                                         }
                                     },
-                                    "Connect with"
-                                ),
-                                _react2.default.createElement(
-                                    _nativeBase.Text,
-                                    { style: { textAlign: "center" }, __source: {
-                                            fileName: _jsxFileName,
-                                            lineNumber: 52
-                                        }
-                                    },
-                                    "Facebook"
+                                    "\u5FAE\u535A\u767B\u5F55"
                                 )
                             )
                         ),
@@ -226,12 +256,12 @@ var SignUp = (_class = function (_Component) {
                             _nativeBase.Button,
                             { transparent: true, block: true, style: _reactNative.StyleSheet.flatten([style.btn, style.email]), __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 55
+                                    lineNumber: 100
                                 }
                             },
                             _react2.default.createElement(_nativeBase.Icon, { name: "ios-mail-outline", style: { color: "white", marginRight: 5 }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 56
+                                    lineNumber: 101
                                 }
                             }),
                             _react2.default.createElement(
@@ -239,50 +269,79 @@ var SignUp = (_class = function (_Component) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 57
+                                        lineNumber: 102
                                     }
                                 },
-                                "or use your email address"
+                                "\u624B\u673A\u767B\u5F55"
                             )
                         ),
                         _react2.default.createElement(
                             _reactNative.View,
                             { style: _components.Styles.form, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 59
+                                    lineNumber: 104
                                 }
                             },
-                            _react2.default.createElement(_components.Field, { label: "Name", __source: {
+                            _react2.default.createElement(_components.Field, { label: "\u90AE\u7BB1(\u53EF\u9009)", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ email: value });
+                                }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 60
+                                    lineNumber: 105
                                 }
                             }),
-                            _react2.default.createElement(_components.Field, { label: "Username", __source: {
+                            _react2.default.createElement(_components.Field, { label: "\u5BC6\u7801", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ password: value });
+                                }, isPasswordField: "true", __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 61
+                                    lineNumber: 106
                                 }
                             }),
-                            _react2.default.createElement(_components.Field, { label: "Password", secureTextEntry: true, __source: {
+                            _react2.default.createElement(_components.Field, { label: "\u786E\u8BA4\u5BC6\u7801", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ password_confirm: value });
+                                }, isPasswordField: "true", __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 62
+                                    lineNumber: 107
+                                }
+                            }),
+                            _react2.default.createElement(_components.Field, { label: "\u59D3", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ first_name: value });
+                                }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 108
+                                }
+                            }),
+                            _react2.default.createElement(_components.Field, { label: "\u540D", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ last_name: value });
+                                }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 109
+                                }
+                            }),
+                            _react2.default.createElement(_components.Field, { label: "\u624B\u673A(\u5FC5\u586B)", onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ cell_phone: value });
+                                }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 110
                                 }
                             }),
                             _react2.default.createElement(
                                 _components.Field,
                                 { label: "Gender", __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 63
+                                        lineNumber: 111
                                     }
                                 },
                                 _react2.default.createElement(_components.SingleChoice, { labels: ["Male", "Female"], __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 64
+                                        lineNumber: 112
                                     }
                                 })
                             ),
-                            _react2.default.createElement(_components.Field, { label: "Birthday", last: true, __source: {
+                            _react2.default.createElement(_components.Field, { label: "\u751F\u65E5", last: true, onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ dob: value });
+                                }, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 66
+                                    lineNumber: 114
                                 }
                             })
                         )
@@ -292,7 +351,7 @@ var SignUp = (_class = function (_Component) {
                     _nativeBase.Button,
                     { primary: true, block: true, onPress: this.signIn, style: { height: _commonColor2.default.footerHeight }, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 70
+                            lineNumber: 118
                         }
                     },
                     _react2.default.createElement(
@@ -300,7 +359,7 @@ var SignUp = (_class = function (_Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 71
+                                lineNumber: 119
                             }
                         },
                         "CONTINUE"

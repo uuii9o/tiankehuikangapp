@@ -162,65 +162,46 @@ var Login = (_class = function (_React$Component) {
                                     lineNumber: 66
                                 }
                             },
-                            _react2.default.createElement(
-                                _nativeBase.Item,
-                                { underline: true, style: style.textBox, __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 80
-                                    }
+                            _react2.default.createElement(_components.Field, { label: "\u624B\u673A\u53F7",
+                                autoCapitalize: "none",
+                                returnKeyType: "next",
+                                onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ cell_phone: value });
                                 },
-                                _react2.default.createElement(_nativeBase.Icon, { name: "navigate", __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 81
-                                    }
-                                }),
-                                _react2.default.createElement(_nativeBase.Input, { placeholder: "\u624B\u673A\u53F7", returnKeyType: "done",
-                                    onChangeText: function onChangeText(value) {
-                                        return _this3.setState({ cell_phone: value });
-                                    },
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 82
-                                    }
-                                })
-                            ),
-                            _react2.default.createElement(
-                                _nativeBase.Item,
-                                { underline: true, style: style.textBox, __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 86
-                                    }
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 67
+                                }
+                            }),
+                            _react2.default.createElement(_components.Field, { label: "\u5BC6\u7801",
+
+                                isPasswordField: "true",
+                                autoCapitalize: "none",
+                                returnKeyType: "go",
+                                onSubmitEditing: this.signIn,
+                                last: true,
+                                onChangeText: function onChangeText(value) {
+                                    return _this3.setState({ password: value });
                                 },
-                                _react2.default.createElement(_nativeBase.Icon, { name: "navigate", __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 87
-                                    }
-                                }),
-                                _react2.default.createElement(_nativeBase.Input, { placeholder: "\u5BC6\u7801", returnKeyType: "done",
-                                    secureTextEntry: true,
-                                    onChangeText: function onChangeText(value) {
-                                        return _this3.setState({ password: value });
-                                    },
-                                    __source: {
-                                        fileName: _jsxFileName,
-                                        lineNumber: 88
-                                    }
-                                })
-                            )
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 72
+                                }
+                            })
                         ),
                         _react2.default.createElement(
                             _reactNative.View,
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 94
+                                    lineNumber: 95
                                 }
                             },
                             _react2.default.createElement(
                                 _nativeBase.Button,
                                 { primary: true, block: true, onPress: this.signIn, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 95
+                                        lineNumber: 96
                                     }
                                 },
                                 _react2.default.createElement(
@@ -228,7 +209,7 @@ var Login = (_class = function (_React$Component) {
                                     {
                                         __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 96
+                                            lineNumber: 97
                                         }
                                     },
                                     "\u767B\u5F55"
@@ -238,14 +219,14 @@ var Login = (_class = function (_React$Component) {
                                 _nativeBase.Button,
                                 { transparent: true, block: true, onPress: this.signUp, __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 98
+                                        lineNumber: 99
                                     }
                                 },
                                 _react2.default.createElement(
                                     _components.Small,
                                     { style: { color: "white" }, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 99
+                                            lineNumber: 100
                                         }
                                     },
                                     "\u7528\u6237\u6CE8\u518C"
